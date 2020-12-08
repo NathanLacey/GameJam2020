@@ -5,15 +5,18 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float MoveSpeed = 1;
+    [SerializeField] float MoveSpeed = 1;
+    [SerializeField] InputAction MoveAction;
+
     Rigidbody2D mRigidbody;
     void Start()
     {
+        MoveAction.Enable();
         mRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(InputAction.CallbackContext context)
+    void Update()
     {
-        mRigidbody.AddForce(context.action.ReadValue<Vector2>() * MoveSpeed, ForceMode2D.Impulse);
+        mRigidbody.position += MoveAction.ReadValue<Vector2>() * MoveSpeed * Time.deltaTime;
     }
 }
