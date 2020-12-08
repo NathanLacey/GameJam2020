@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,5 +15,20 @@ public class Malfunction : MonoBehaviour
 	void Update()
 	{
 
+	}
+
+	public void Trigger()
+	{
+
+	}
+
+	public bool TryActivate(System.Random random)
+	{
+		if (random.NextDouble() <= activationChance)
+		{
+			Trigger();
+			return true;
+		}
+		return false;
 	}
 }
