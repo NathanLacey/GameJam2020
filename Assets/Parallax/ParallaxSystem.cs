@@ -70,18 +70,41 @@ public static class ListExtra
 
 public class ParallaxSystem : MonoBehaviour
 {
+	[SerializeField] GameObject referenceObject;
+	[SerializeField] Vector3 wind = Vector3.zero;
+	Vector3 prevRefPos;
+
+	[Header("Layers")]
 	[SerializeField] List<ParallaxLayer> parallaxLayers;
 	[SerializeField] List<float> parallaxControls;
 
-	// Start is called before the first frame update
 	void OnValidate()
 	{ 
 		parallaxControls.Resize(parallaxLayers.Count);
 	}
+	private void Start()
+	{
+		prevRefPos = referenceObject.transform.position;
+	}
 
-	// Update is called once per frame
 	void Update()
 	{
+		float diminishingMultiplier = 1.0f;
+		float incrementalMultiplier = 0.15f;
+		Vector3 currentMovement = (referenceObject.transform.position - prevRefPos);
+		prevRefPos = referenceObject.transform.position;
+		for(int i = 0; i < parallaxLayers.Count; ++i)
+		{
+			float multiplier = parallaxControls[i];
+			diminishingMultiplier *= multiplier;
+			incrementalMultiplier /= multiplier;
 
+			var layer = parallaxLayers[i];
+			var position = layer.transform.position;
+			position += wind * diminishingMultiplier * Time.deltaTime;
+			position += currentMovement * incrementalMultiplier;
+			position.z = i + 1;
+			layer.transform.position = position;
+		}
 	}
 }
