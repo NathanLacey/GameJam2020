@@ -38,4 +38,9 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
 	public void StartMiniGame()
 	{
 	}
+
+    public void OnMalfunctionStart()
+	{
+
+	}
 }

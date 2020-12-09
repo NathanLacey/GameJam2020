@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class FixPropeller : MonoBehaviour
 {
-    DragAndSpin Gear;
+    [SerializeField] DragAndSpin Gear;
     [SerializeField] int TotalSpinsToFix = 1;
 	public bool IsFinished { get { return Gear.TotalTimesSpun >= TotalSpinsToFix; } }
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        Gear = GetComponent<DragAndSpin>();
-    }
+	private void OnEnable()
+	{
+		Gear.Reset();
+	}
 
 	private void OnDisable()
 	{
-		Gear.Reset();
+		Gear.enabled = false;
 	}
 }

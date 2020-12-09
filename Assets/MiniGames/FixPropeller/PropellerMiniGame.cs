@@ -18,11 +18,6 @@ public class PropellerMiniGame : MonoBehaviour, IMiniGame
 		}
 	}
 
-	private void OnEnable()
-	{
-		Reset();
-	}
-
 	void Reset()
 	{
 		BrokenPropeller.gameObject.SetActive(true);
@@ -30,6 +25,11 @@ public class PropellerMiniGame : MonoBehaviour, IMiniGame
 	}
 
 	public void StartMiniGame()
+	{
+		BrokenPropeller.GetComponent<DragAndSpin>().enabled = true;
+	}
+
+	public void OnMalfunctionStart()
 	{
 		Reset();
 	}

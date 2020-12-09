@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2505524204663547213
 Transform:
   m_ObjectHideFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c259ffb5abe8934e8e89f904f4bbcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gear: {fileID: 2505524204663547214}
   TotalSpinsToFix: 3
 --- !u!1 &2505524205614126655
 GameObject:

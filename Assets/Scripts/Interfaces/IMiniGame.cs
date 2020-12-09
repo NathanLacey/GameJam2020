@@ -5,5 +5,6 @@ using UnityEngine;
 public interface IMiniGame
 {
     bool IsFinished { get; }
+    void OnMalfunctionStart();
     void StartMiniGame();
 }

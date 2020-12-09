@@ -7,7 +7,6 @@ public class Malfunction : MonoBehaviour
 {
 	[SerializeField] [Range(0.0f, 1.0f)] float activationChance;
 	[SerializeField] GameObject miniGameObject;
-	bool isActive = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -17,24 +16,29 @@ public class Malfunction : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (isActive)
+		IMiniGame miniGameComponent;
+		if (miniGameObject && miniGameObject.TryGetComponent<IMiniGame>(out miniGameComponent))
 		{
-			IMiniGame miniGameComponent;
-			if (miniGameObject && miniGameObject.TryGetComponent<IMiniGame>(out miniGameComponent))
+			if (miniGameComponent.IsFinished)
 			{
-				if (miniGameComponent.IsFinished)
-				{
-					isActive = false;
-					gameObject.SetActive(false);
-				}
+				gameObject.SetActive(false);
 			}
+		}
+	}
+
+	private void OnEnable()
+	{
+		IMiniGame miniGameComponent;
+		if (miniGameObject && miniGameObject.TryGetComponent<IMiniGame>(out miniGameComponent))
+		{
+			miniGameComponent.OnMalfunctionStart();
 		}
 	}
 
 	// What happens when the player tries to fix it
 	public void Interact()
 	{
-		if (isActive)
+		if (gameObject.activeSelf)
 		{
 			// hook into the minigame and disable when completed
 			IMiniGame miniGameComponent;
@@ -46,7 +50,6 @@ public class Malfunction : MonoBehaviour
 			// if there's no minigame just disable the malfunction
 			else
 			{
-				isActive = false;
 				gameObject.SetActive(false);
 			}
 		}
@@ -55,7 +58,6 @@ public class Malfunction : MonoBehaviour
 	// When called the malfunction is put in an active state
 	public void Trigger()
 	{
-		isActive = true;
 		// display broken icon
 		gameObject.SetActive(true);
 	}
@@ -63,7 +65,7 @@ public class Malfunction : MonoBehaviour
 	// called by the manager to start the malfunction
 	public bool TryActivate(System.Random random)
 	{
-		if (!isActive && random.NextDouble() <= activationChance)
+		if (!gameObject.activeSelf && random.NextDouble() <= activationChance)
 		{
 			Trigger();
 			return true;
