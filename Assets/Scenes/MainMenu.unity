@@ -607,6 +607,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Look
       m_Flags: 0
+  TotalSpinsNeeded: 3
   TotalDistanceSpun: 0
 --- !u!58 &2141316715
 CircleCollider2D:
