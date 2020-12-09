@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefabs:
-  - {fileID: 2120113289009538695, guid: ba12b7d26879963469b16393ddf2593b, type: 3}
+  - {fileID: 1176230299245545412, guid: c20e33625b728bd43bb5186f832f0fc9, type: 3}
+  - {fileID: 1176230299245545412, guid: 6341d9c5aeeb9cb4d9175918f6981d45, type: 3}
+  - {fileID: 1176230299245545412, guid: 5c325c0ca5fbcd644845912e2db779b9, type: 3}
   spawnPoolSize: 25
   spawnGridSize: 1
   totalSpawnAreaSize: 30
@@ -199,7 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefabs:
-  - {fileID: 2120113289009538695, guid: cceb88a6007384a4f97f60e9465bf339, type: 3}
+  - {fileID: 1176230299245545412, guid: fec51eb4aa4604a40b0449a1188a06e8, type: 3}
+  - {fileID: 1176230299245545412, guid: f18e3fb178c158d45a64763365584926, type: 3}
   spawnPoolSize: 25
   spawnGridSize: 1
   totalSpawnAreaSize: 30
@@ -396,7 +399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefabs:
-  - {fileID: 2120113289009538695, guid: 90965c00b15a4a548b98c4929254b4df, type: 3}
+  - {fileID: 1176230299245545412, guid: 8728cca414d450742bc84deea34fbd30, type: 3}
+  - {fileID: 1176230299245545412, guid: d5416fd02872ca64997402f10981af69, type: 3}
   spawnPoolSize: 25
   spawnGridSize: 1
   totalSpawnAreaSize: 30
