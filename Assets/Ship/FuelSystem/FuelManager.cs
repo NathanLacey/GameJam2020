@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FuelManager : MonoBehaviour
 {
-    private static FuelManager pInstance;
-    public static FuelManager Instance { get { return pInstance; } }
-
     [SerializeField] private GameObject fuelTemplatePrefab;
     [SerializeField] private List<GameObject> fuels;
     [SerializeField] private float fuelRespawnTime = 0;
@@ -15,15 +12,6 @@ public class FuelManager : MonoBehaviour
 
     void Awake()
     {
-        if (pInstance != null && pInstance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            pInstance = this;
-        }
-
         fuels = new List<GameObject>();
         //fuels.Resize(10);
         for(int i = 0; i < 10; ++i)
@@ -46,13 +34,16 @@ public class FuelManager : MonoBehaviour
 
     private void SpawnFuel()
     {
-        fuels[currentFuelObjectIndex].SetActive(true);
+        if (!fuels[currentFuelObjectIndex].activeSelf)
+        {
+            fuels[currentFuelObjectIndex].SetActive(true);
+            fuels[currentFuelObjectIndex].transform.position = transform.position;
+        }
         currentFuelObjectIndex = ++currentFuelObjectIndex % fuels.Count;
     }
 
     public void ResetFuel(GameObject fuel)
     {
         fuel.SetActive(false);
-        fuel.transform.position = transform.position;
     }
 }

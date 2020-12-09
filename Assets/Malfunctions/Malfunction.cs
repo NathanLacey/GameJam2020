@@ -6,6 +6,7 @@ using UnityEngine;
 public class Malfunction : MonoBehaviour
 {
 	[SerializeField] [Range(0.0f, 1.0f)] float activationChance;
+	bool isActive = false;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -17,14 +18,27 @@ public class Malfunction : MonoBehaviour
 
 	}
 
+	// What happens when the player tries to fix it
+	public void Interact()
+	{
+		if (isActive)
+		{
+			// hook into the minigame and disable when completed
+			gameObject.SetActive(false);
+		}
+	}
+
+	// When called the malfunction is put in an active state
 	public void Trigger()
 	{
-
+		isActive = true;
+		// display broken icon
+		gameObject.SetActive(true);
 	}
 
 	public bool TryActivate(System.Random random)
 	{
-		if (random.NextDouble() <= activationChance)
+		if (!isActive && random.NextDouble() <= activationChance)
 		{
 			Trigger();
 			return true;

@@ -8,6 +8,7 @@ public class Engine : MonoBehaviour
     [SerializeField] private float engineMaxHeat;
     [SerializeField] private float fuelRestoreHeatAmount;
     [SerializeField] private GameObject heatBar;
+    [SerializeField] private FuelManager fuelManger;
     private Slider heatBarSlider;
     private float currentEngineHeat;
 
@@ -30,7 +31,7 @@ public class Engine : MonoBehaviour
 
     private void BurnFuel(GameObject fuel)
     {
-        FuelManager.Instance.ResetFuel(fuel);
+        fuelManger.ResetFuel(fuel);
         if (currentEngineHeat + fuelRestoreHeatAmount >= engineMaxHeat)
         {
             currentEngineHeat = engineMaxHeat;
