@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SpinOnClick : MonoBehaviour
+public class SpinOnClickMainMenu : MonoBehaviour
 {
     [SerializeField] InputAction ClickAction;
 	[SerializeField] InputAction LookAction;
 
 	CircleCollider2D Collider;
 	[SerializeField] int TotalSpinsNeeded = 3;
-	[SerializeField] float TotalDistanceSpun = 0.0f;
+	float TotalDistanceSpun = 0.0f;
 
 	bool HasStartedDragging = false;
 	float AngleAtDragStart;
