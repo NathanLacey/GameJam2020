@@ -16,9 +16,15 @@ public class ShipFloorExit : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.tag == "Player")
+		if(collision.gameObject.CompareTag("Player"))
 		{
-			FloorManager.ChangeToShipFloor(ShipFloorToExitTo);
+			//Check if the direction the player is going should cause a transition
+			Movement playerMovement = collision.gameObject.GetComponent<Movement>();
+			Vector2 exitForwardVector = transform.right;
+			if(Vector2.Dot(exitForwardVector, playerMovement.MoveDirection) > 0)
+			{
+				FloorManager.ChangeToShipFloor(ShipFloorToExitTo);
+			}
 		}
 	}
 }
