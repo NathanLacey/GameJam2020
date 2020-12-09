@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IMiniGame
 {
     bool IsFinished { get; }
+    void StartMiniGame();
 }

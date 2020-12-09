@@ -31,6 +31,11 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
 
     void StopGame()
 	{
+        GearComponents.ForEach(gear => gear.Reset());
         GearComponents.ForEach(gear => gear.enabled = false);
+	}
+
+	public void StartMiniGame()
+	{
 	}
 }

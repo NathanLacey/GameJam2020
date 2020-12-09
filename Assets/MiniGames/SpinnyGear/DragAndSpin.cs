@@ -12,19 +12,22 @@ public class DragAndSpin : MonoBehaviour
 	[SerializeField] [Range(0.0f, 1.0f)] float DeprecationValue;
 	float TotalDistanceSpun = 0.0f;
 
+	public int TotalTimesSpun { get { return (int)(TotalDistanceSpun / 720.0f); } }
+
 	[SerializeField] bool AutoSpin = false;
 
 	bool HasStartedDragging = false;
-	float AngleAtDragStart;
-	float TouchAngleAtDragStart;
-	float LastRotationAngle;
-
+	float AngleAtDragStart = 0.0f;
+	float TouchAngleAtDragStart = 0.0f;
+	float LastRotationAngle = 0.0f;
+	Quaternion OriginalRotation = Quaternion.identity;
 
 	private void Start()
 	{
 		ClickAction.Enable();
 		DragAction.Enable();
 		Collider = GetComponent<CircleCollider2D>();
+		OriginalRotation = gameObject.transform.rotation;
 	}
 
 	private void Update()
@@ -41,6 +44,16 @@ public class DragAndSpin : MonoBehaviour
 		}
 
 		RealDrag();
+	}
+
+	public void Reset()
+	{
+		HasStartedDragging = false;
+		AngleAtDragStart = 0.0f;
+		TouchAngleAtDragStart = 0.0f;
+		LastRotationAngle = 0.0f;
+		TotalDistanceSpun = 0.0f;
+		gameObject.transform.rotation = OriginalRotation;
 	}
 
 	void RealDrag()
