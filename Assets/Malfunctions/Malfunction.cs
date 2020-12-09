@@ -24,6 +24,7 @@ public class Malfunction : MonoBehaviour
 		if (isActive)
 		{
 			// hook into the minigame and disable when completed
+			isActive = false;
 			gameObject.SetActive(false);
 		}
 	}
