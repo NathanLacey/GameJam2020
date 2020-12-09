@@ -4,70 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ListExtra
-{
-	public static void Resize<T>(this List<T> list, int size) where T : class
-	{
-		int cur = list.Count;
-		if (size < cur)
-		{
-			list.RemoveRange(size, cur - size);
-		}
-		else if (size > cur)
-		{
-			if (size > list.Capacity)
-			{
-				list.Capacity = size;
-			}
-			int countToAdd = size - cur;
-			for (int i = 0; i < countToAdd; ++i)
-			{
-				list.Add(null);
-			}
-		}
-	}
-	public static void Resize(this List<int> list, int size)
-	{
-		int cur = list.Count;
-		if (size < cur)
-		{
-			list.RemoveRange(size, cur - size);
-		}
-		else if (size > cur)
-		{
-			if (size > list.Capacity)
-			{
-				list.Capacity = size;
-			}
-			int countToAdd = size - cur;
-			for (int i = 0; i < countToAdd; ++i)
-			{
-				list.Add(0);
-			}
-		}
-	}
-	public static void Resize(this List<float> list, int size)
-	{
-		int cur = list.Count;
-		if (size < cur)
-		{
-			list.RemoveRange(size, cur - size);
-		}
-		else if (size > cur)
-		{
-			if (size > list.Capacity)//this bit is purely an optimisation, to avoid multiple automatic capacity changes.
-			{
-				list.Capacity = size;
-			}
-			int countToAdd = size - cur;
-			for (int i = 0; i < countToAdd; ++i)
-			{
-				list.Add(0.0f);
-			}
-		}
-	}
-}
-
 public class ParallaxSystem : MonoBehaviour
 {
 	[SerializeField] GameObject referenceObject;
@@ -78,9 +14,27 @@ public class ParallaxSystem : MonoBehaviour
 	[SerializeField] List<ParallaxLayer> parallaxLayers;
 	[SerializeField] List<float> parallaxControls;
 
+
+	public Vector3 WindDir
+	{
+		get { return wind; }
+	}
+	public Vector3 PrevRefPosition
+	{
+		get { return prevRefPos; }
+	}
 	void OnValidate()
 	{ 
 		parallaxControls.Resize(parallaxLayers.Count);
+		
+	}
+
+	private void Awake()
+	{
+		foreach (var layer in parallaxLayers)
+		{
+			layer.ReferenceObject = referenceObject;
+		}
 	}
 	private void Start()
 	{
@@ -90,7 +44,7 @@ public class ParallaxSystem : MonoBehaviour
 	void Update()
 	{
 		float diminishingMultiplier = 1.0f;
-		float incrementalMultiplier = 0.15f;
+		float incrementalMultiplier = 0.05f;
 		Vector3 currentMovement = (referenceObject.transform.position - prevRefPos);
 		prevRefPos = referenceObject.transform.position;
 		for(int i = 0; i < parallaxLayers.Count; ++i)
@@ -108,3 +62,4 @@ public class ParallaxSystem : MonoBehaviour
 		}
 	}
 }
+
