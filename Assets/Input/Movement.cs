@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     [SerializeField] InputAction MoveAction;
 
     Rigidbody2D mRigidbody;
+
+    public Vector2 MoveDirection { get { return MoveAction.ReadValue<Vector2>(); } }
     void Start()
     {
         MoveAction.Enable();
@@ -17,6 +19,6 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        mRigidbody.position += MoveAction.ReadValue<Vector2>() * MoveSpeed * Time.deltaTime;
+        mRigidbody.position += MoveDirection * MoveSpeed * Time.deltaTime;
     }
 }
