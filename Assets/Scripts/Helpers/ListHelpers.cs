@@ -9,7 +9,7 @@ public static class ListHelpers
 
 	public static void Shuffle<T>(this List<T> list) where T : class
 	{
-		for (int i = list.Count; i > 1; --i)
+		for (int i = list.Count - 1; i > 1; --i)
 		{
 			int k = rng.Next(i + 1);
 			T value = list[k];

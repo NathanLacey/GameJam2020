@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 5537664676119489407}
   - component: {fileID: 5537664676119489406}
   - component: {fileID: 5537664676119489400}
+  - component: {fileID: 8518070736522718365}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -431,3 +432,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &8518070736522718365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537664676119489378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4899684e247702c4eabd7a4d36254947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 265a9f1d-c731-4761-b11a-9e324bfb1eb4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 93b29564-ef7b-4f51-a0e5-3b88132b9551
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0

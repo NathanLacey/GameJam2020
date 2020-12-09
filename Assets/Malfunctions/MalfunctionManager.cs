@@ -7,14 +7,14 @@ public class MalfunctionManager : MonoBehaviour
 {
 	public static System.Random random = new System.Random();
 
-	List<Malfunction> malfunctions;
+	List<Malfunction> malfunctions = new List<Malfunction>();
 	int malfunctionIndex;
 	[SerializeField] [Range(0.0f, 100.0f)] float malfunctionRate;
 	float nextMalfunction;
 
 	void Start()
 	{
-		malfunctions.AddRange(GameObject.FindObjectsOfType<Malfunction>());
+		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
 		malfunctions.Shuffle();
 		nextMalfunction = Time.fixedTime + malfunctionRate;
 	}
@@ -22,7 +22,7 @@ public class MalfunctionManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (nextMalfunction == Time.fixedTime)
+		if (Time.fixedTime >= nextMalfunction)
 		{
 			if (malfunctions.Count < 1)
 			{
