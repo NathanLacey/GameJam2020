@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 159766846782662603}
   - component: {fileID: 7461989371508082569}
   - component: {fileID: 8082679355842900221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fuel
   m_TagString: Fuel
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8029534048963754437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4161286, y: 0.7477074, z: -0.24618214}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,9 +95,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.01
+  m_Mass: 1
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: efa64b354473b9544a899cfb0aa9e308, type: 2}
   m_Interpolate: 0
