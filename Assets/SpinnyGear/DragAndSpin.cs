@@ -9,11 +9,10 @@ public class DragAndSpin : MonoBehaviour
 	[SerializeField] InputAction DragAction;
 
 	CircleCollider2D Collider;
-	[SerializeField] int TotalSpinsNeeded = 3;
 	[SerializeField] [Range(0.0f, 1.0f)] float DeprecationValue;
-	[SerializeField] float TotalDistanceSpun = 0.0f;
+	float TotalDistanceSpun = 0.0f;
 
-	[SerializeField] bool SpinsClockWise = true;
+	[SerializeField] bool AutoSpin = false;
 
 	bool HasStartedDragging = false;
 	float AngleAtDragStart;
@@ -31,7 +30,7 @@ public class DragAndSpin : MonoBehaviour
 	private void Update()
 	{
 		float deprecationAngle = Time.deltaTime * (DeprecationValue * 50.0f);
-		TotalDistanceSpun -= SpinsClockWise ? deprecationAngle : -deprecationAngle;
+		TotalDistanceSpun -= AutoSpin ? -deprecationAngle : deprecationAngle;
 		if (TotalDistanceSpun < 0.0f)
 		{
 			TotalDistanceSpun = 0.0f;
@@ -42,16 +41,6 @@ public class DragAndSpin : MonoBehaviour
 		}
 
 		RealDrag();
-
-		if (IsFinishedSpinning())
-		{
-			Debug.Log("Done");
-		}
-	}
-
-	bool IsFinishedSpinning()
-	{
-		return TotalDistanceSpun / 720.0f >= TotalSpinsNeeded;
 	}
 
 	void RealDrag()
