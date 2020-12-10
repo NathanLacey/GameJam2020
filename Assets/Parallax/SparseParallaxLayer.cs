@@ -56,8 +56,10 @@ public class SparseParallaxLayer : ParallaxLayer
 
             ref Bounds bounds = ref spawnBounds[randIndexX, randIndexY];
             bounds.Occupied = true;
-            var xPos = bounds.boundsRect.x - totalSpawnAreaSize / 2 + bounds.boundsRect.width / 2;
-            var yPos = bounds.boundsRect.y - totalSpawnAreaSize / 2 + bounds.boundsRect.height / 2;
+            float randomXOffset = randomGen.Next(-bounds.boundsRect.width * 40, bounds.boundsRect.width * 40) / 100.0f;
+            float randomYOffset = randomGen.Next(-bounds.boundsRect.height * 40, bounds.boundsRect.height * 40) / 100.0f;
+            var xPos = bounds.boundsRect.x - totalSpawnAreaSize / 2 + bounds.boundsRect.width / 2 + randomXOffset;
+            var yPos = bounds.boundsRect.y - totalSpawnAreaSize / 2 + bounds.boundsRect.height / 2 + randomYOffset;
             var spawnPos = ReferenceObject.transform.position;
             spawnPos.x += xPos;
             spawnPos.y += yPos;
@@ -65,6 +67,8 @@ public class SparseParallaxLayer : ParallaxLayer
 
             int prefabIndex = randomGen.Next(0, spawnPrefabs.Count);
             objectPool[i] = Instantiate(spawnPrefabs[prefabIndex], spawnPos, Quaternion.identity, transform);
+            float randomScale = randomGen.Next(80, 130) / 100.0f;
+            objectPool[i].transform.localScale = new Vector3(randomScale, randomScale, 1.0f);
         }
     }
 
