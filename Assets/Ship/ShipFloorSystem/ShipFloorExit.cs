@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ShipFloorExit : MonoBehaviour
 {
-	GameObject ThisShipFloor;
 	[SerializeField] GameObject ShipFloorToExitTo;
+	[SerializeField] Transform PositionToTeleportPlayerTo;
 	ShipFloorManager FloorManager;
 
 	private void Start()
 	{
-		ThisShipFloor = transform.parent.gameObject;
 		FloorManager = FindObjectOfType<ShipFloorManager>();
 	}
 
@@ -24,6 +23,8 @@ public class ShipFloorExit : MonoBehaviour
 			if(Vector2.Dot(exitForwardVector, playerMovement.MoveDirection) > 0)
 			{
 				FloorManager.ChangeToShipFloor(ShipFloorToExitTo);
+				EdgeCollider2D edge = GetComponent<EdgeCollider2D>();
+				collision.gameObject.transform.position = new Vector3(edge.bounds.center.x, edge.bounds.center.y, collision.gameObject.transform.position.z);
 			}
 		}
 	}

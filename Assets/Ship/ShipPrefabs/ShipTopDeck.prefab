@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShipFloorToExitTo: {fileID: 0}
+  PositionToTeleportPlayerTo: {fileID: 0}
 --- !u!61 &1124928462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShipFloorToExitTo: {fileID: 0}
+  PositionToTeleportPlayerTo: {fileID: 0}
 --- !u!61 &1923053232
 BoxCollider2D:
   m_ObjectHideFlags: 0
