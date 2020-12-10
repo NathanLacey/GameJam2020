@@ -12,35 +12,38 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
             return TriggerComponents.TrueForAll(trigger => trigger.IsBeingTriggered);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        TriggerComponents.AddRange(GetComponentsInChildren<IsTriggered>());
-        GearComponents.AddRange(GetComponentsInChildren<DragAndSpin>());
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(IsFinished)
+    void SetupComponents()
+	{
+        if (TriggerComponents.Count == 0)
+        {
+            TriggerComponents.AddRange(GetComponentsInChildren<IsTriggered>());
+        }
+        if(GearComponents.Count == 0)
 		{
-            StopGame();
-            Debug.Log("Gear Game Complete!");
+            GearComponents.AddRange(GetComponentsInChildren<DragAndSpin>());
 		}
     }
 
-    void StopGame()
-	{
-        GearComponents.ForEach(gear => gear.Reset());
-        GearComponents.ForEach(gear => gear.enabled = false);
-	}
+    private void Update()
+    {
+        if (IsFinished)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
-	public void StartMiniGame()
+
+    public void StartMiniGame()
 	{
-	}
+        GearComponents.ForEach(gear => gear.enabled = true);
+    }
 
     public void OnMalfunctionStart()
 	{
-
-	}
+        gameObject.SetActive(true);
+        SetupComponents();
+        GearComponents.ForEach(gear => gear.Reset());
+        GearComponents.ForEach(gear => gear.enabled = false);
+    }
 }
