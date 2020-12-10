@@ -9,7 +9,7 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
     public bool IsFinished { 
         get
 		{
-            return TriggerComponents.TrueForAll(trigger => trigger.IsBeingTriggered);
+            return TriggerComponents.Count == 0 ? false : TriggerComponents.TrueForAll(trigger => trigger.IsBeingTriggered);
         }
     }
 
@@ -36,14 +36,13 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
 
     public void StartMiniGame()
 	{
-        GearComponents.ForEach(gear => gear.enabled = true);
+        gameObject.SetActive(true);
+        SetupComponents();
+        GearComponents.ForEach(gear => gear.Reset());
     }
 
     public void OnMalfunctionStart()
 	{
-        gameObject.SetActive(true);
-        SetupComponents();
-        GearComponents.ForEach(gear => gear.Reset());
-        GearComponents.ForEach(gear => gear.enabled = false);
+        
     }
 }
