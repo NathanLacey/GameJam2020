@@ -47,5 +47,5 @@ MonoBehaviour:
   - {fileID: 1233319458244094246, guid: 051ac748ec7cdfa418b5f92834b45d65, type: 3}
   horGridCount: 25
   vertGridCount: 25
-  tileWidth: 4.95
-  tileHeight: 4.06
+  tileWidth: 4.096
+  tileHeight: 4.096

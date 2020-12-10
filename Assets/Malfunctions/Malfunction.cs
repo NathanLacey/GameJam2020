@@ -7,6 +7,7 @@ public class Malfunction : MonoBehaviour
 {
 	[SerializeField] [Range(0.0f, 1.0f)] float activationChance;
 	[SerializeField] GameObject miniGameObject;
+	Movement playerMovementComp = null;
 
 	// Start is called before the first frame update
 	void Start()
@@ -21,6 +22,10 @@ public class Malfunction : MonoBehaviour
 		{
 			if (miniGameComponent.IsFinished)
 			{
+				if(playerMovementComp)
+				{
+					playerMovementComp.enabled = true;
+				}
 				gameObject.SetActive(false);
 			}
 		}
@@ -36,7 +41,7 @@ public class Malfunction : MonoBehaviour
 	}
 
 	// What happens when the player tries to fix it
-	public void Interact()
+	public void Interact(GameObject playerObject)
 	{
 		if (gameObject.activeSelf)
 		{
@@ -45,6 +50,10 @@ public class Malfunction : MonoBehaviour
 			if (miniGameObject && miniGameObject.TryGetComponent<IMiniGame>(out miniGameComponent))
 			{
 				// TODO: check that we're not already running the minigame
+				if(playerObject && playerObject.TryGetComponent<Movement>(out playerMovementComp))
+				{
+					playerMovementComp.enabled = false;
+				}
 				miniGameComponent.StartMiniGame();
 			}
 			// if there's no minigame just disable the malfunction

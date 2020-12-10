@@ -9,6 +9,6 @@ public class SpinPropeller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z + SpinSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z - SpinSpeed * Time.deltaTime);
     }
 }
