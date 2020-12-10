@@ -49,6 +49,6 @@ MonoBehaviour:
   - {fileID: 1176230299245545412, guid: 5c325c0ca5fbcd644845912e2db779b9, type: 3}
   - {fileID: 1176230299245545412, guid: 4d8a6b63da4fd73448dceca0bbed77d4, type: 3}
   - {fileID: 1176230299245545412, guid: 9b47e5ab14e6498448eb60ee744e4a0a, type: 3}
-  spawnPoolSize: 90
+  spawnPoolSize: 250
   spawnGridSize: 2
-  totalSpawnAreaSize: 30
+  totalSpawnAreaSize: 100

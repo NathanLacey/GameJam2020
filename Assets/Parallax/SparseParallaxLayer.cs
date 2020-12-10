@@ -60,14 +60,14 @@ public class SparseParallaxLayer : ParallaxLayer
             float randomYOffset = randomGen.Next(-bounds.boundsRect.height * 40, bounds.boundsRect.height * 40) / 100.0f;
             var xPos = bounds.boundsRect.x - totalSpawnAreaSize / 2 + bounds.boundsRect.width / 2 + randomXOffset;
             var yPos = bounds.boundsRect.y - totalSpawnAreaSize / 2 + bounds.boundsRect.height / 2 + randomYOffset;
-            var spawnPos = ReferenceObject.transform.position;
+            var spawnPos = new Vector3(0,0,0);
             spawnPos.x += xPos;
             spawnPos.y += yPos;
             spawnPos.z = 0;
 
             int prefabIndex = randomGen.Next(0, spawnPrefabs.Count);
             objectPool[i] = Instantiate(spawnPrefabs[prefabIndex], spawnPos, Quaternion.identity, transform);
-            float randomScale = randomGen.Next(80, 130) / 100.0f;
+            float randomScale = randomGen.Next(75, 135) / 100.0f;
             objectPool[i].transform.localScale = new Vector3(randomScale, randomScale, 1.0f);
         }
     }
@@ -75,17 +75,14 @@ public class SparseParallaxLayer : ParallaxLayer
     // Update is called once per frame
     void Update()
     {
-        var refPos = ReferenceObject.transform.position;
-       
         for (int i = 0; i < spawnPoolSize; ++i)
         {
             var pos = objectPool[i].transform.position;
-            if (pos.x < (refPos.x - totalSpawnAreaSize / 2))
+            if (pos.x < -totalSpawnAreaSize / 2)
             {
-                pos.x = refPos.x + totalSpawnAreaSize / 2;
+                pos.x = totalSpawnAreaSize / 2;
             }
             objectPool[i].transform.position = pos;
         }
-        
     }
 }
