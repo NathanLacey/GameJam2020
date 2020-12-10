@@ -21,7 +21,7 @@ public class FuelPickUp : MonoBehaviour
                 Vector2 grabVector = transform.position + transform.right * grabDistance;
                 RaycastHit2D raycastHit2D = Physics2D.Linecast(transform.position, grabVector, (1<<8));
                 Debug.DrawLine(transform.position, grabVector);
-                if (raycastHit2D)
+                if (raycastHit2D && raycastHit2D.collider.CompareTag("Fuel"))
                 {
                     PickUpFuel(raycastHit2D.collider.gameObject);
                 }
@@ -38,12 +38,14 @@ public class FuelPickUp : MonoBehaviour
         currentPickedUpFuel = fuel;
         currentPickedUpFuel.transform.SetParent(transform);
         currentPickedUpFuel.GetComponent<Rigidbody2D>().isKinematic = true;
+        currentPickedUpFuel.GetComponent<Collider2D>().enabled = false;
     }
 
     void DropFuel()
     {
         currentPickedUpFuel.GetComponent<Rigidbody2D>().isKinematic = false;
         currentPickedUpFuel.GetComponent<Rigidbody2D>().AddForce(transform.right * throwForce);
+        currentPickedUpFuel.GetComponent<Collider2D>().enabled = true;
         currentPickedUpFuel.transform.parent = null;
         currentPickedUpFuel = null;
     }
