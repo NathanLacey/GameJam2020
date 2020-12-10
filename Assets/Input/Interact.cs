@@ -25,7 +25,7 @@ public class Interact : MonoBehaviour
 		{
 			if (interactAction.ReadValue<float>() > 0)
 			{
-				collision.gameObject.GetComponent<Malfunction>().Interact();
+				collision.gameObject.GetComponent<Malfunction>().Interact(gameObject);
 			}
 		}
 	}
