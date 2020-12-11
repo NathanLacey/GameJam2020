@@ -15,8 +15,12 @@ public enum CraneState
     IsSlidingIn,
     IsSlidingOut
 }
-public class ClawGame : MonoBehaviour
+public class ClawGame : MonoBehaviour, IMiniGame
 {
+    [SerializeField] private GameObject PlayerHud;
+    [SerializeField] private Camera ClawCamera;
+    private List<Camera> OtherCameras = new List<Camera>();
+    [SerializeField] private Bag bag;
     [SerializeField] private List<GameObject> armLinks;
     [SerializeField] private List<GameObject> clawArms;
 
@@ -43,16 +47,35 @@ public class ClawGame : MonoBehaviour
     private Quaternion leftInitialRotation;
     private Quaternion rightInitialRotation;
 
-    void Start()
+    public bool IsFinished { get; private set; } = false;
+
+	void Start()
     {
+        Reset();
+        initialClawPosition = clawArms[0].transform.localPosition;
+        OtherCameras.AddRange(FindObjectsOfType<Camera>());
+        OtherCameras.Remove(ClawCamera);
+    }
+
+    void Reset()
+	{
         currentExtensionLength = 0.0f;
         currentSlideLength = 0.0f;
-
-        initialClawPosition = clawArms[0].transform.localPosition;
     }
 
     void Update()
     {
+        if(bag.HasWon)
+		{
+            toySpawner.SetActive(false);
+            ClawCamera.enabled = false;
+            OtherCameras.ForEach(camera => camera.enabled = true);
+            PlayerHud.SetActive(true);
+            IsFinished = true;
+            FindObjectOfType<MalfunctionManager>().PauseMalfunctionCreation = false;
+            return;
+        }
+
         switch (currentCraneState)
         {
             case CraneState.IsExtending:
@@ -204,9 +227,19 @@ public class ClawGame : MonoBehaviour
         }
     }
 
-    public void StartClawGame()
-    {
+	public void OnMalfunctionStart()
+	{
+        IsFinished = false;
+        bag.HasWon = false;
+        Reset();
+    }
+
+	public void StartMiniGame()
+	{
         toySpawner.SetActive(true);
-        //Switch camera
+        PlayerHud.SetActive(false);
+        OtherCameras.ForEach(camera => camera.enabled = false);
+        ClawCamera.enabled = true;
+        FindObjectOfType<MalfunctionManager>().PauseMalfunctionCreation = true;
     }
 }

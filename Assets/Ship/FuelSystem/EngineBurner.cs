@@ -9,15 +9,22 @@ public class EngineBurner : MonoBehaviour
     [SerializeField] private float fuelConsumption = 10.0f;
     // Start is called before the first frame update
     private float currentEngineHeat;
+
+    MalfunctionManager pauseCheck;
     void Awake()
     {
         currentEngineHeat = engineMaxHeat * 0.75f;
+        pauseCheck = FindObjectOfType<MalfunctionManager>();
     }
 
     public float FuelPercentage { get { return currentEngineHeat / engineMaxHeat; } }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (pauseCheck.PauseMalfunctionCreation)
+		{
+            return;
+		}
         currentEngineHeat -= Time.fixedDeltaTime * Random.Range(fuelConsumption - fuelConsumption * 0.25f, fuelConsumption + fuelConsumption * 0.25f);
         if (currentEngineHeat <= 0)
         {
