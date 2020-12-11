@@ -448,6 +448,16 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1351053642215653091, guid: ccc9ca7d867ad984e971116f24973346,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
+    - target: {fileID: 6920447371772842137, guid: ccc9ca7d867ad984e971116f24973346,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
     - target: {fileID: 8187011540379799200, guid: ccc9ca7d867ad984e971116f24973346,
         type: 3}
       propertyPath: m_Name
