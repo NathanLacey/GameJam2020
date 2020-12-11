@@ -30,6 +30,11 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 	{
 		GameObject spawnedCannonball = Instantiate(GetCannonball(), transform);
 		spawnedCannonball.GetComponent<Rigidbody2D>().AddForce(transform.right * CannonForce, ForceMode2D.Impulse);
+		AudioSource fireSound;
+		if (gameObject.TryGetComponent<AudioSource>(out fireSound))
+		{
+			fireSound.Play();
+		}
 		isFinished = true;
 	}
 }
