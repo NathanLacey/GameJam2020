@@ -9,6 +9,7 @@ TagManager:
   - MiniGame
   - OperationNoNoZone
   - Malfunction
+  - Minimap
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - 
   - Fuel
-  - 
+  - Minimap
   - 
   - 
   - 
