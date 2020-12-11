@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
 	}
 	void Update()
 	{
+		if(malfunctionManager.PauseMalfunctionCreation)
+		{
+			return;
+		}
+
 		currentTime += Time.deltaTime;
 
 		if (currentTime >= timeToComplete)

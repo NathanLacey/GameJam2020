@@ -516,6 +516,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 827298726196480752}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1010255885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7924149082892375437, guid: fe463f84a9afd2b498bef9e257731811,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608309244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014411041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1374,11 +1380,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipTopDeck
       objectReference: {fileID: 0}
-    - target: {fileID: 6409185385160267785, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
+    - target: {fileID: 7468078270964074663, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: PlayerHud
+      value: 
+      objectReference: {fileID: 1010255885}
     - target: {fileID: 8121188691239518196, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -1433,16 +1439,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569114269241521790, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -33.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569114269241521790, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcc042784b5b5d4ab06358b71a5c5ef, type: 3}

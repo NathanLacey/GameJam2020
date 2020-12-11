@@ -16,6 +16,10 @@ public class FacingDirection : MonoBehaviour
     void Update()
     {
         Vector2 mousePosition = LookAction.ReadValue<Vector2>();
+        if(!Camera.main)
+		{
+            return;
+		}
         Vector2 originPosition = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 directionVector = mousePosition - originPosition;
         float angle = Mathf.Atan2(directionVector.x, directionVector.y) * Mathf.Rad2Deg;

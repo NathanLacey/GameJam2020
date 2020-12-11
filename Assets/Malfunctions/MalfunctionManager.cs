@@ -15,7 +15,7 @@ public class MalfunctionManager : MonoBehaviour
 	public bool hasBottomDeckMalfunctions { get { return numBottomDeckMalfunctions > 0; } }
 
 	public int CriticalMalfunctionCount { get { return numBottomDeckMalfunctions + numTopDeckMalfunctions; } }
-
+	public bool PauseMalfunctionCreation = false;
 	void Awake()
 	{
 		
@@ -30,6 +30,12 @@ public class MalfunctionManager : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
+		if(PauseMalfunctionCreation)
+		{
+			nextMalfunction += Time.fixedDeltaTime;
+			return;
+		}
+
 		if (Time.fixedTime >= nextMalfunction)
 		{
 			if (malfunctions.Count < 1)
