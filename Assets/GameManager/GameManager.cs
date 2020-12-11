@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
 		}
 		set
 		{
+			if(value == false && isGameOver)
+			{
+				return;
+			}
 			malfunctionManager.PauseMalfunctionCreation = value;
 			pauseGameTime = value;
 		}
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
 
 		if (currentTime >= timeToComplete)
 		{
-			Paused = true;
+			SetGameOver();
 			OnGameComplete?.Invoke();
 		}
 
@@ -86,6 +90,7 @@ public class GameManager : MonoBehaviour
 
 	public void StartGameOver()
 	{
+		SetGameOver();
 		OnGameOver?.Invoke();
 	}
 
