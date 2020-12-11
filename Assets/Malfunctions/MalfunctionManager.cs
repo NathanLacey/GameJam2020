@@ -12,6 +12,21 @@ public class MalfunctionManager : MonoBehaviour
 	[SerializeField] [Range(0.0f, 100.0f)] float malfunctionRate;
 	float nextMalfunction;
 
+	public int CriticalMalfunctionCount
+	{
+		get
+		{
+			int count = 0;
+			foreach(var malfunc in malfunctions)
+			{
+				if(malfunc.gameObject.activeSelf)
+				{
+					++count;
+				}
+			}
+			return count;
+		}
+	}
 	void Start()
 	{
 		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
