@@ -13,13 +13,17 @@ public enum PipeState
 
 public class Matrix3<T>
 {
-    public List<List<T>> data = new List<List<T>>(3);
+    public List<List<T>> data = new List<List<T>>();
 
     public Matrix3()
     {
-        foreach(var row in data)
+        for (int i = 0; i < 3; ++i)
         {
-            row.Capacity = 3;
+            data.Add(new List<T>());
+            for (int j = 0; j < 3; ++j)
+            {
+                data[i].Add(default(T));
+            }
         }
     }
    
@@ -34,12 +38,40 @@ public class PipeData
 {
     public PipeState currentPipeState = PipeState.North;
     public Transform pipeTransform;
+
+    public bool Compare(PipeData other)
+    {
+        return currentPipeState == other.currentPipeState || (currentPipeState == PipeState.Any || other.currentPipeState == PipeState.Any);
+    }
+
+    public void UpdateTransform()
+    {
+        switch(currentPipeState)
+        {
+            case PipeState.North:
+                pipeTransform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                break;
+            case PipeState.East:
+                pipeTransform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+                break;
+            case PipeState.South:
+                pipeTransform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+                break;
+            case PipeState.West:
+                pipeTransform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+                break;
+            default:
+                break;
+        }
+    }
 }
 
-public class PipeGame : MonoBehaviour
+public class PipeGame : MonoBehaviour, IMiniGame
 {
-    private Matrix3<PipeData> pipeMatrix = new Matrix3<PipeData>();
-    
+    [SerializeField] private List<GameObject> pipeFields;
+    private PipeData currentPipeData;
+    private int activeBoard;
+    public bool IsFinished { get; private set; } = false;
     void Start()
     {
         
@@ -48,5 +80,83 @@ public class PipeGame : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Select00()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[0][0];
+    }
+
+    public void Select01()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[0][1];
+    }
+
+    public void Select02()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[0][2];
+    }
+
+    public void Select10()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[1][0];
+    }
+
+    public void Select11()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[1][1];
+    }
+
+    public void Select12()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[1][2];
+    }
+
+    public void Select20()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[2][0];
+    }
+
+    public void Select21()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[2][1];
+    }
+
+    public void Select22()
+    {
+        currentPipeData = pipeFields[activeBoard].GetComponent<PipeField>().pipeMatrix[2][2];
+    }
+
+    public void RotateRight()
+    {
+        if (currentPipeData != null)
+        {
+            currentPipeData.currentPipeState = (PipeState)((int)++currentPipeData.currentPipeState % 4);
+        }
+    }
+
+    public void RotateLeft()
+    {
+        if (currentPipeData != null)
+        {
+            currentPipeData.currentPipeState = (PipeState)(((int)--currentPipeData.currentPipeState + 4) % 4);
+        }
+    }
+
+    public void OnMalfunctionStart()
+    {
+        IsFinished = false;
+    }
+
+    public void StartMiniGame()
+    {
+        activeBoard = Random.Range(0, pipeFields.Count);
+        pipeFields[activeBoard].SetActive(true);
+    }
+
+    public void Finished()
+    {
+        pipeFields[activeBoard].SetActive(false);
+        IsFinished = true;
     }
 }
