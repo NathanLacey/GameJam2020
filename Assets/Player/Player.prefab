@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorManager: {fileID: 0}
   grabDistance: 0.5
-  throwForce: 100
+  throwForce: 250
 --- !u!82 &279312659
 AudioSource:
   m_ObjectHideFlags: 0
