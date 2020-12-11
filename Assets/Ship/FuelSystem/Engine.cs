@@ -23,8 +23,7 @@ public class Engine : MonoBehaviour
         currentEngineHeat -= Time.fixedDeltaTime;
         if (currentEngineHeat <= 0)
         {
-            //Ship stops??
-            Debug.Log("OUT OF FUEL YOU DUMB ASS");
+            FindObjectOfType<GameManager>().StartGameOver();
         }
         heatBarSlider.value = currentEngineHeat / engineMaxHeat;
     }

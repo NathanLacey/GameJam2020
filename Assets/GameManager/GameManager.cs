@@ -25,16 +25,16 @@ public class GameManager : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if(currentTime >= timeToComplete && OnGameComplete != null)
+        if(currentTime >= timeToComplete)
 		{
-            OnGameComplete();
+            OnGameComplete?.Invoke();
 		}
 
         if(malfunctionManager != null)
 		{
-            if(malfunctionManager.CriticalMalfunctionCount >= maxMalfunctions && OnGameOver != null)
+            if(malfunctionManager.CriticalMalfunctionCount >= maxMalfunctions)
 			{
-                OnGameOver();
+                StartGameOver();
 			}
 		}
 		else
@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Must Attach Malfunction Manager");
 		}
     }
+
+    public void StartGameOver()
+	{
+        OnGameOver?.Invoke();
+	}
 }
