@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2191182459072534177}
   - component: {fileID: 8316950346857471052}
-  - component: {fileID: 4738717014745106879}
+  - component: {fileID: 8771955991487374923}
   m_Layer: 0
   m_Name: CannonMiniGame
   m_TagString: Untagged
@@ -46,8 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CannonballPrefab: {fileID: 0}
   BetterCannonballPrefab: {fileID: 0}
+  ConfettiPrefab: {fileID: 6597191899257367096, guid: 7dd55afd411e0934991cfd545db3a5e8,
+    type: 3}
+  DustPrefab: {fileID: 6597191899257367096, guid: 3a7090cf289bf8a4caacd975c54f1892,
+    type: 3}
   CannonForce: 1
---- !u!82 &4738717014745106879
+--- !u!82 &8771955991487374923
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
