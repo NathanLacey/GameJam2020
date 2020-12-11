@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5674202121262354880}
   - component: {fileID: 6701568302333547773}
   m_Layer: 0
-  m_Name: PortEngine
+  m_Name: EngineBurner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineMaxHeat: 1000
   fuelRestoreHeatAmount: 100
+  fuelConsumption: 10
