@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 158332504, guid: ccc9ca7d867ad984e971116f24973346, type: 3}
       propertyPath: engineBurner
       value: 
-      objectReference: {fileID: 1833403178}
+      objectReference: {fileID: 219951977}
     - target: {fileID: 729589690, guid: ccc9ca7d867ad984e971116f24973346, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1339,6 +1339,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 827298726290789897, guid: 82f2750d721e2924a93fdd2cb99b4832,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1359,6 +1360,7 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+=======
     - target: {fileID: 827298726457284502, guid: 82f2750d721e2924a93fdd2cb99b4832,
         type: 3}
       propertyPath: fuelManager
@@ -1369,6 +1371,7 @@ PrefabInstance:
       propertyPath: engineBurner
       value: 
       objectReference: {fileID: 219951977}
+>>>>>>> 84450d7... More fiiiixess
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f2750d721e2924a93fdd2cb99b4832, type: 3}
 --- !u!1001 &5058314894031256675
