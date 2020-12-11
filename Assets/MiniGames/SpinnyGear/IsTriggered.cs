@@ -8,6 +8,11 @@ public class IsTriggered : MonoBehaviour
 
 	[HideInInspector] public bool IsBeingTriggered = false;
 
+
+	private void Start()
+	{
+		
+	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == TriggerTagName)

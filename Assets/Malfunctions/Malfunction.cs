@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Malfunction : MonoBehaviour
 {
-	[SerializeField] [Range(0.0f, 1.0f)] float activationChance;
+	[SerializeField] [Range(0.0f, 1.0f)] public float activationChance;
 	[SerializeField] GameObject miniGameObject;
 	Movement playerMovementComp = null;
-
 	// Start is called before the first frame update
 	void Start()
 	{

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MalfunctionManager : MonoBehaviour
 {
-	List<Malfunction> malfunctions = new List<Malfunction>();
+	public List<Malfunction> malfunctions = new List<Malfunction>();
 	int malfunctionIndex;
 	[SerializeField] [Range(0.0f, 100.0f)] float malfunctionRate;
 	float nextMalfunction;
@@ -16,11 +16,12 @@ public class MalfunctionManager : MonoBehaviour
 
 	public int CriticalMalfunctionCount { get { return numBottomDeckMalfunctions + numTopDeckMalfunctions; } }
 
-	void Start()
+	void Awake()
 	{
 		
 		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
-		malfunctions.RemoveAll(malfunction => malfunction.gameObject.scene.rootCount == 0); 
+		malfunctions.RemoveAll(malfunction => malfunction.gameObject.scene.rootCount == 0);
+		malfunctions.RemoveAll(malfunction => malfunction.activationChance == 0);
 		malfunctions.Shuffle();
 		malfunctions.ForEach(malfunction => malfunction.gameObject.SetActive(false));
 		nextMalfunction = Time.fixedTime + malfunctionRate;
