@@ -934,6 +934,71 @@ PrefabInstance:
       propertyPath: shipFloorManagerObject
       value: 
       objectReference: {fileID: 87932579}
+    - target: {fileID: 1070106446870865358, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
+    - target: {fileID: 2046358288762308066, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358288908020219, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358288908020219, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358288908020219, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358289268631187, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: engineBurner
+      value: 
+      objectReference: {fileID: 219951977}
+    - target: {fileID: 2046358289326414229, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
+    - target: {fileID: 2046358289434725075, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358289463146667, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358289524152272, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358289858018455, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358289858018455, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046358290362461557, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: engineBurner
+      value: 
+      objectReference: {fileID: 1833403178}
     - target: {fileID: 2405431314803769159, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: gameManager
@@ -1065,6 +1130,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6040586176878219581, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
+    - target: {fileID: 7924149082892375433, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8965679711872830388, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: gameManager
       value: 
