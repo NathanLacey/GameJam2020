@@ -11,6 +11,7 @@ TagManager:
   - Malfunction
   - Minimap
   - Cannonball
+  - Toy
   layers:
   - Default
   - TransparentFX
