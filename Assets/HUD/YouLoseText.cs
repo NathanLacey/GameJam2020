@@ -16,6 +16,10 @@ public class YouLoseText : MonoBehaviour
 		foreach(Transform trans in transform)
 		{
 			trans.gameObject.SetActive(true);
+			if(trans.name == "Score")
+			{
+				trans.gameObject.GetComponent<UnityEngine.UI.Text>().text = "Score: " + gameManager.CurrentScore;
+			}
 		}
 	}
 }
