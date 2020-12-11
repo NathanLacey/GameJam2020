@@ -1137,6 +1137,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5537664676119489407, guid: fe463f84a9afd2b498bef9e257731811,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7924149082892375433, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1436,6 +1441,16 @@ PrefabInstance:
       objectReference: {fileID: 1010255885}
     - target: {fileID: 7468078270964074663, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
         type: 3}
+      propertyPath: slideSpeed
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468078270964074663, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
+        type: 3}
+      propertyPath: extensionSpeed
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468078270964074663, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
+        type: 3}
       propertyPath: OtherCameras.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1503,6 +1518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513447884965900028, guid: 4bcc042784b5b5d4ab06358b71a5c5ef,
+        type: 3}
+      propertyPath: toyRespawnTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bcc042784b5b5d4ab06358b71a5c5ef, type: 3}

@@ -61,7 +61,7 @@ public class ClawGame : MonoBehaviour, IMiniGame
         currentSlideLength = 0.0f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(bag.HasWon)
 		{

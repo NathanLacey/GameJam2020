@@ -23,7 +23,7 @@ public class SpawnToys : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         currentRespawnTime += Time.fixedDeltaTime;
         if(currentRespawnTime >= toyRespawnTime)
