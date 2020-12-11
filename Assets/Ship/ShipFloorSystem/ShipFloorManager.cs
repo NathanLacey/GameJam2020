@@ -6,6 +6,7 @@ public class ShipFloorManager : MonoBehaviour
 {
 	[SerializeField] GameObject CurrentShipFloor;
     [SerializeField] List<GameObject> ShipFloors = new List<GameObject>();
+	public bool isLowerDeck { get { return CurrentShipFloor.name == "ShipBottomDeck"; } }
 
     void Start()
 	{
