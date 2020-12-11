@@ -8,7 +8,8 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 
 	[SerializeField] GameObject CannonballPrefab;
     [SerializeField] GameObject BetterCannonballPrefab;
-	[SerializeField] GameObject ConfettiPrefab;
+    [SerializeField] GameObject ConfettiPrefab;
+    [SerializeField] GameObject DustPrefab;
 	[SerializeField] float CannonForce = 1.0f;
 	GameObject SpawnedCannonball;
 	private bool isFinished = false;
@@ -22,18 +23,29 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 		}
 	}
 
-	GameObject GetCannonball()
+	int GetCannonball()
 	{
-		return Random.Range(0, 10) == 0 ? BetterCannonballPrefab : CannonballPrefab;
+		return Random.Range(0, 10);
 	}
 
 	public void StartMiniGame()
 	{
-		GameObject spawnedCannonball = Instantiate(GetCannonball(), transform);
+		int cannonBall = GetCannonball();
+        GameObject spawnedCannonball;
+		GameObject particles;
+		if (cannonBall == 0)
+        {
+			spawnedCannonball = Instantiate(BetterCannonballPrefab, transform);
+			particles = Instantiate(ConfettiPrefab, transform);
+        }
+        else
+        {
+			spawnedCannonball = Instantiate(CannonballPrefab, transform);
+			particles = Instantiate(DustPrefab, transform);
+		}
         spawnedCannonball.GetComponent<Rigidbody2D>().AddForce(transform.right * CannonForce, ForceMode2D.Impulse);
+		particles.GetComponent<ParticleSystem>().Play();
 
-        GameObject confetti = Instantiate(ConfettiPrefab, transform);
-		confetti.GetComponent<ParticleSystem>().Play();
 		isFinished = true;
 	}
 }
