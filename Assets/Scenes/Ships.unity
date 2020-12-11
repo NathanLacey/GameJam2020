@@ -1087,6 +1087,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6701568302333547773, guid: 454f3e8627aae4f43a593ef8f8b75887,
+        type: 3}
+      propertyPath: fuelRestoreHeatAmount
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454f3e8627aae4f43a593ef8f8b75887, type: 3}
 --- !u!1 &1607980875 stripped
@@ -1529,6 +1534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701568302333547773, guid: 454f3e8627aae4f43a593ef8f8b75887,
+        type: 3}
+      propertyPath: fuelRestoreHeatAmount
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454f3e8627aae4f43a593ef8f8b75887, type: 3}
