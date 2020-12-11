@@ -19,7 +19,7 @@ public class ClawGame : MonoBehaviour, IMiniGame
 {
     [SerializeField] private GameObject PlayerHud;
     [SerializeField] private Camera ClawCamera;
-    private List<Camera> OtherCameras = new List<Camera>();
+    [SerializeField] private List<Camera> OtherCameras = new List<Camera>();
     [SerializeField] private Bag bag;
     [SerializeField] private List<GameObject> armLinks;
     [SerializeField] private List<GameObject> clawArms;
@@ -53,8 +53,6 @@ public class ClawGame : MonoBehaviour, IMiniGame
     {
         Reset();
         initialClawPosition = clawArms[0].transform.localPosition;
-        OtherCameras.AddRange(FindObjectsOfType<Camera>());
-        OtherCameras.Remove(ClawCamera);
     }
 
     void Reset()

@@ -68,13 +68,14 @@ public class PipeData
 
 public class PipeGame : MonoBehaviour, IMiniGame
 {
+    [SerializeField] private Camera ClawCamera;
+    [SerializeField] private List<Camera> OtherCameras = new List<Camera>();
     [SerializeField] private List<GameObject> pipeFields;
     private PipeData currentPipeData;
     private int activeBoard;
     public bool IsFinished { get; private set; } = false;
     void Start()
     {
-        
     }
 
     void Update()
@@ -150,13 +151,24 @@ public class PipeGame : MonoBehaviour, IMiniGame
 
     public void StartMiniGame()
     {
-        activeBoard = Random.Range(0, pipeFields.Count);
-        pipeFields[activeBoard].SetActive(true);
+        FindObjectOfType<MalfunctionManager>().PauseMalfunctionCreation = true;
+        if (!gameObject.activeSelf)
+		{
+            activeBoard = Random.Range(0, pipeFields.Count);
+            pipeFields[activeBoard].SetActive(true);
+        }
+        OtherCameras.ForEach(camera => camera.enabled = false);
+        ClawCamera.enabled = true;
+        gameObject.SetActive(true);
     }
 
     public void Finished()
     {
+        FindObjectOfType<MalfunctionManager>().PauseMalfunctionCreation = false;
         pipeFields[activeBoard].SetActive(false);
+        gameObject.SetActive(false);
+        ClawCamera.enabled = false;
+        OtherCameras.ForEach(camera => camera.enabled = true);
         IsFinished = true;
     }
 }
