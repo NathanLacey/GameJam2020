@@ -29,14 +29,16 @@ public class MalfunctionManager : MonoBehaviour
 	}
 	void Start()
 	{
+		
 		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
+		malfunctions.RemoveAll(malfunction => malfunction.gameObject.scene.rootCount == 0); 
 		malfunctions.Shuffle();
 		malfunctions.ForEach(malfunction => malfunction.gameObject.SetActive(false));
 		nextMalfunction = Time.fixedTime + malfunctionRate;
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		if (Time.fixedTime >= nextMalfunction)
 		{
