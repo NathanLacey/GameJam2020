@@ -35,7 +35,7 @@ public class SpinOnClickMainMenu : MonoBehaviour
 	}
 	void TransitionToScene()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Ships");
 	}
 
 	bool IsFinishedSpinning()
