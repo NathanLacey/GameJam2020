@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipFloorManagerObject: {fileID: 0}
-  aboveDeckVolume: 1
-  belowDeckVolume: 0.3
+  aboveDeckVolume: 0.7
+  belowDeckVolume: 0.2
 --- !u!1 &2446527152053487954
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a91cf5fc7d6bd74b9f7d43fe86d1463, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
