@@ -7,7 +7,8 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 	public bool IsFinished { get { return isFinished; } }
 
 	[SerializeField] GameObject CannonballPrefab;
-	[SerializeField] GameObject BetterCannonballPrefab;
+    [SerializeField] GameObject BetterCannonballPrefab;
+	[SerializeField] GameObject ConfettiPrefab;
 	[SerializeField] float CannonForce = 1.0f;
 	GameObject SpawnedCannonball;
 	private bool isFinished = false;
@@ -29,7 +30,10 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 	public void StartMiniGame()
 	{
 		GameObject spawnedCannonball = Instantiate(GetCannonball(), transform);
-		spawnedCannonball.GetComponent<Rigidbody2D>().AddForce(transform.right * CannonForce, ForceMode2D.Impulse);
+        spawnedCannonball.GetComponent<Rigidbody2D>().AddForce(transform.right * CannonForce, ForceMode2D.Impulse);
+
+        GameObject confetti = Instantiate(ConfettiPrefab, transform);
+		confetti.GetComponent<ParticleSystem>().Play();
 		isFinished = true;
 	}
 }
