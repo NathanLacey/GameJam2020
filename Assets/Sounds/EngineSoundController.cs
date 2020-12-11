@@ -50,14 +50,14 @@ public class EngineSoundController : MonoBehaviour
 	void UseUpperDeckAudio(AudioSource engineAudio)
 	{
 		engineAudio.bypassEffects = false;
-		engineAudio.volume = 0.3f;
+		engineAudio.volume = aboveDeckVolume;
 		wasBelowDeck = false;
 	}
 
 	void UseLowerDeckAudio(AudioSource engineAudio)
 	{
 		engineAudio.bypassEffects = true;
-		engineAudio.volume = 1.0f;
+		engineAudio.volume = belowDeckVolume;
 		wasBelowDeck = true;
 	}
 }

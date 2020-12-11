@@ -9,21 +9,13 @@ public class MalfunctionManager : MonoBehaviour
 	[SerializeField] [Range(0.0f, 100.0f)] float malfunctionRate;
 	float nextMalfunction;
 
-	public int CriticalMalfunctionCount
-	{
-		get
-		{
-			int count = 0;
-			foreach(var malfunc in malfunctions)
-			{
-				if(malfunc.gameObject.activeSelf)
-				{
-					++count;
-				}
-			}
-			return count;
-		}
-	}
+	int numTopDeckMalfunctions = 0;
+	int numBottomDeckMalfunctions = 0;
+	public bool hasTopDeckMalfunctions { get { return numTopDeckMalfunctions > 0; } }
+	public bool hasBottomDeckMalfunctions { get { return numBottomDeckMalfunctions > 0; } }
+
+	public int CriticalMalfunctionCount { get { return numBottomDeckMalfunctions + numTopDeckMalfunctions; } }
+
 	void Start()
 	{
 		
@@ -63,6 +55,23 @@ public class MalfunctionManager : MonoBehaviour
 			}
 
 			nextMalfunction = Time.fixedTime + malfunctionRate;
+		}
+
+		numTopDeckMalfunctions = 0;
+		numBottomDeckMalfunctions = 0;
+		foreach (var malfunc in malfunctions)
+		{
+			if (malfunc.gameObject.activeSelf)
+			{
+				if (malfunc.transform.parent.name == "ShipTopDeck")
+				{
+					++numTopDeckMalfunctions;
+				}
+				else
+				{
+					++numBottomDeckMalfunctions;
+				}
+			}
 		}
 	}
 }
