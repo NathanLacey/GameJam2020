@@ -25,7 +25,7 @@ public class CannonMiniGame : MonoBehaviour, IMiniGame
 
 	int GetCannonball()
 	{
-		return Random.Range(0, 10);
+		return Random.Range(0, 5);
 	}
 
 	public void StartMiniGame()
