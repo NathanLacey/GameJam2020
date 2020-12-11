@@ -763,6 +763,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 827298726152810585}
     m_Modifications:
+    - target: {fileID: 639420412953099288, guid: fd967cd966cf3344297d18cc8c7ea8d4,
+        type: 3}
+      propertyPath: FuelSpawnParent
+      value: 
+      objectReference: {fileID: 827298726152810585}
     - target: {fileID: 639420412953099289, guid: fd967cd966cf3344297d18cc8c7ea8d4,
         type: 3}
       propertyPath: m_RootOrder
@@ -850,6 +855,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 827298726152810585}
     m_Modifications:
+    - target: {fileID: 639420412953099288, guid: fd967cd966cf3344297d18cc8c7ea8d4,
+        type: 3}
+      propertyPath: FuelSpawnParent
+      value: 
+      objectReference: {fileID: 827298726152810585}
     - target: {fileID: 639420412953099289, guid: fd967cd966cf3344297d18cc8c7ea8d4,
         type: 3}
       propertyPath: m_RootOrder

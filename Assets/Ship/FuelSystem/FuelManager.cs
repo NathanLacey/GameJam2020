@@ -8,6 +8,7 @@ public class FuelManager : MonoBehaviour
     [SerializeField] private GameObject fuelTemplatePrefab;
     [SerializeField] private List<GameObject> fuels = new List<GameObject>();
     [SerializeField] private float fuelRespawnTime = 0;
+    [SerializeField] private Transform FuelSpawnParent;
     private float currentFuelRespawnTime = 0;
     private int currentFuelObjectIndex = 0;
 
@@ -18,6 +19,7 @@ public class FuelManager : MonoBehaviour
             fuels.Add(Instantiate(fuelTemplatePrefab));
             fuels[i].SetActive(false);
             fuels[i].transform.position = transform.position;
+            fuels[i].transform.parent = FuelSpawnParent;
         }
     }
 

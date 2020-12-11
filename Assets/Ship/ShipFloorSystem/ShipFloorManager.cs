@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipFloorManager : MonoBehaviour
 {
-	[SerializeField] GameObject CurrentShipFloor;
+	[SerializeField] public GameObject CurrentShipFloor;
     [SerializeField] List<GameObject> ShipFloors = new List<GameObject>();
 	public bool isLowerDeck { get { return CurrentShipFloor.name == "ShipBottomDeck"; } }
 

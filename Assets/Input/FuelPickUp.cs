@@ -5,11 +5,13 @@ using UnityEngine.InputSystem;
 
 public class FuelPickUp : MonoBehaviour
 {
+    [SerializeField] private ShipFloorManager FloorManager;
     [SerializeField] private float grabDistance = 1.0f;
     [SerializeField] private float throwForce = 1.0f;
     private GameObject currentPickedUpFuel;
     void Awake()
     {
+        FloorManager = FindObjectOfType<ShipFloorManager>();
     }
 
     void Update()
@@ -46,7 +48,7 @@ public class FuelPickUp : MonoBehaviour
         currentPickedUpFuel.GetComponent<Rigidbody2D>().isKinematic = false;
         currentPickedUpFuel.GetComponent<Rigidbody2D>().AddForce(transform.right * throwForce);
         currentPickedUpFuel.GetComponent<Collider2D>().enabled = true;
-        currentPickedUpFuel.transform.parent = null;
+        currentPickedUpFuel.transform.parent = FloorManager.CurrentShipFloor.transform;
         currentPickedUpFuel = null;
     }
 }
