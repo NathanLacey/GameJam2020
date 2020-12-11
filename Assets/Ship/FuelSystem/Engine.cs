@@ -5,47 +5,28 @@ using UnityEngine.UI;
 
 public class Engine : MonoBehaviour
 {
-    [SerializeField] private float engineMaxHeat;
-    [SerializeField] private float fuelRestoreHeatAmount;
+    [SerializeField] private EngineBurner engineBurner;
     [SerializeField] private GameObject heatBar;
-    [SerializeField] private FuelManager fuelManger;
+    [SerializeField] private FuelManager fuelManager;
     private Slider heatBarSlider;
-    private float currentEngineHeat;
 
     void Awake()
     {
-        currentEngineHeat = engineMaxHeat;
         heatBarSlider = heatBar.GetComponent<Slider>();
     }
 
     void Update()
     {
-        currentEngineHeat -= Time.fixedDeltaTime;
-        if (currentEngineHeat <= 0)
-        {
-            FindObjectOfType<GameManager>().StartGameOver();
-        }
-        heatBarSlider.value = currentEngineHeat / engineMaxHeat;
-    }
 
-    private void BurnFuel(GameObject fuel)
-    {
-        fuelManger.ResetFuel(fuel);
-        if (currentEngineHeat + fuelRestoreHeatAmount >= engineMaxHeat)
-        {
-            currentEngineHeat = engineMaxHeat;
-        }
-        else
-        {
-            currentEngineHeat = currentEngineHeat + fuelRestoreHeatAmount;
-        }
+        heatBarSlider.value = engineBurner.FuelPercentage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Fuel"))
         {
-            BurnFuel(collision.gameObject);
+            fuelManager.ResetFuel(collision.gameObject);
+            engineBurner.BurnFuel();
         }
     }
 }
