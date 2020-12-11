@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     MalfunctionManager malfunctionManager;
     [SerializeField] int maxMalfunctions = 5;
     [SerializeField] float timeToComplete = 5 * 60; // 5 minutes
-
+    [SerializeField] EngineBurner topEngineBurner;
+    [SerializeField] EngineBurner bottomEngineBurner;
     float currentTime = 0.0f;
 
     public delegate void GameCondition();
@@ -40,6 +41,11 @@ public class GameManager : MonoBehaviour
 		else
 		{
             Debug.Log("Must Attach Malfunction Manager");
+		}
+
+        if(topEngineBurner.FuelPercentage < 0.0f || bottomEngineBurner.FuelPercentage < 0.0f)
+		{
+            StartGameOver();
 		}
     }
 
