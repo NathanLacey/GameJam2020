@@ -39,7 +39,7 @@ public class TiledParallaxLayer : ParallaxLayer
 		for(int i = 0; i < objectPool.Count; ++i)
 		{
 			var pos = objectPool[i].transform.position;
-			if (pos.x < ReferenceObject.transform.position.x - horGridSize / 2)
+			if (pos.x < -horGridSize / 2)
 			{
 				pos.x += horGridSize;
 				objectPool[i].transform.position = pos;

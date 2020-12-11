@@ -43,6 +43,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fa707f780af7c4995ea7e676cc4255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuelSprites:
+  - {fileID: 21300000, guid: 86155c672354a654ab2b8d245a546a37, type: 3}
+  - {fileID: 21300000, guid: dfc48107fe55b9646be4aaca022b8f7c, type: 3}
+  - {fileID: 21300000, guid: d90b62547d631a54483915a9f7c74902, type: 3}
+  - {fileID: 21300000, guid: ed5e247456fdc914a8c8418d87b65b0c, type: 3}
+  - {fileID: 21300000, guid: 6f8c17612253821428a95658abff61fd, type: 3}
+  - {fileID: 21300000, guid: be29efdb77fa06a438e26f695441f719, type: 3}
+  - {fileID: 21300000, guid: a63d433890e0cb145acd128c2cb00628, type: 3}
+  - {fileID: 21300000, guid: 0854874c5021c4b48ba7ed04f144d54a, type: 3}
+  - {fileID: 21300000, guid: 2a435216ed413e64b93b2e8b2436f809, type: 3}
+  - {fileID: 21300000, guid: b5894ca0e5995214db0325698e0935f0, type: 3}
+  - {fileID: 21300000, guid: 0421d844ea336c2478ceef9b19b31b4a, type: 3}
+  - {fileID: 21300000, guid: 258acaee3d1828547b52656adc76c19e, type: 3}
+  - {fileID: 21300000, guid: 7523b4b74692d5e4f9c7e995d03c692c, type: 3}
+  - {fileID: 21300000, guid: 65bff553f57cc8f46b4281c3756fe951, type: 3}
   fuelTemplatePrefab: {fileID: 8029534048963754437, guid: 66ae07e4c77545446b921c19920e2a44,
     type: 3}
   fuels: []
