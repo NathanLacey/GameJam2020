@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,6 @@ public class TiledParallaxLayer : ParallaxLayer
 	[SerializeField] int vertGridCount;
 	[SerializeField] float tileWidth;
 	[SerializeField] float tileHeight;
-    readonly System.Random randomGen = new System.Random(Guid.NewGuid().GetHashCode());
 	float horGridSize;
 	float vertGridSize;
 	private void Start()
@@ -28,7 +26,7 @@ public class TiledParallaxLayer : ParallaxLayer
 				spawnPos.x += x;
 				spawnPos.y += y;
 				spawnPos.z = 0;
-				int prefabIndex = randomGen.Next(0, spawnPrefabs.Count);
+				int prefabIndex = Random.Range(0, spawnPrefabs.Count);
 				objectPool[yPos * horGridCount + xPos] = Instantiate(spawnPrefabs[prefabIndex], spawnPos, Quaternion.identity, transform);
 			}
 		}

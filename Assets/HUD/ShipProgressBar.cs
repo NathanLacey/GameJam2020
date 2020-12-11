@@ -14,11 +14,10 @@ public class ShipProgressBar : MonoBehaviour
     void Start()
     {
         slider = GetComponent<UnityEngine.UI.Slider>();
-        System.Random random = new System.Random(System.Guid.NewGuid().GetHashCode());
 
-        int randIndex = random.Next(0, townList.Count);
+        int randIndex = Random.Range(0, townList.Count);
         startingTown.sprite = townList[randIndex];
-        randIndex = random.Next(0, townList.Count);
+        randIndex = Random.Range(0, townList.Count);
         endingTown.sprite = townList[randIndex];
     }
 

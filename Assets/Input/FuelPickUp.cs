@@ -8,7 +8,6 @@ public class FuelPickUp : MonoBehaviour
 	[SerializeField] private ShipFloorManager FloorManager;
 	[SerializeField] private float grabDistance = 1.0f;
 	[SerializeField] private float throwForce = 1.0f;
-	public static System.Random random = new System.Random();
 	private GameObject currentPickedUpFuel;
 	void Awake()
 	{
@@ -45,7 +44,7 @@ public class FuelPickUp : MonoBehaviour
 		AudioSource scoopSound;
 		if (gameObject.TryGetComponent<AudioSource>(out scoopSound))
 		{
-			scoopSound.pitch = ((float)random.NextDouble() * 1.6f) + 0.7f;
+			scoopSound.pitch = Random.Range(0.7f, 1.3f);
 			scoopSound.Play();
 		}
 	}

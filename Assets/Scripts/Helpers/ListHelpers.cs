@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ public static class ListHelpers
 	{
 		for (int i = list.Count - 1; i > 1; --i)
 		{
-			int k = rng.Next(i + 1);
+			int k = Random.Range(0, i + 1);
 			T value = list[k];
 			list[k] = list[i];
 			list[i] = value;
