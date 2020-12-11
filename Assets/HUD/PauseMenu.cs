@@ -7,15 +7,16 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] InputAction inputAction;
     [SerializeField] GameObject pauseMenu;
-
+	[SerializeField] GameManager gameManager;
 	private void Start()
 	{
 		inputAction.Enable();
 		
 	}
-	void OnPauseMenu()
+	public void OnPauseMenu()
 	{
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+		gameManager.Paused = pauseMenu.activeSelf;
 	}
 
 	private void Update()

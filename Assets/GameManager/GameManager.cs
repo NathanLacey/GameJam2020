@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    MalfunctionManager malfunctionManager;
-    [SerializeField] int maxMalfunctions = 5;
-    [SerializeField] float timeToComplete = 5 * 60; // 5 minutes
-    [SerializeField] EngineBurner topEngineBurner;
-    [SerializeField] EngineBurner bottomEngineBurner;
-    float currentTime = 0.0f;
+	MalfunctionManager malfunctionManager;
+	[SerializeField] int maxMalfunctions = 5;
+	[SerializeField] float timeToComplete = 5 * 60; // 5 minutes
+	[SerializeField] EngineBurner topEngineBurner;
+	[SerializeField] EngineBurner bottomEngineBurner;
+	float currentTime = 0.0f;
 	int currentScore = 0;
 	bool isGameOver = false;
 
 	public delegate void GameCondition();
 	public event GameCondition OnGameComplete;
 	public event GameCondition OnGameOver;
-
+	bool pauseGameTime = false;
+	public bool Paused
+	{
+		get
+		{
+			return pauseGameTime;
+		}
+		set
+		{
+			malfunctionManager.PauseMalfunctionCreation = value;
+			pauseGameTime = value;
+		}
+	}
 	public float CurrentTravelProgress { get { return Mathf.Clamp(currentTime / timeToComplete, 0.0f, 1.0f); } }
 	public int CurrentScore
 	{
 		get
 		{
-			if(!isGameOver)
+			if (!isGameOver)
 			{
 				currentScore = (int)(CurrentTravelProgress * 100000.0f);
 			}
@@ -38,15 +50,19 @@ public class GameManager : MonoBehaviour
 	}
 	void Update()
 	{
-		if(malfunctionManager.PauseMalfunctionCreation)
+		if (malfunctionManager.PauseMalfunctionCreation)
 		{
 			return;
 		}
 
-		currentTime += Time.deltaTime;
+		if(!Paused)
+		{
+			currentTime += Time.deltaTime;
+		}
 
 		if (currentTime >= timeToComplete)
 		{
+			Paused = true;
 			OnGameComplete?.Invoke();
 		}
 
@@ -62,11 +78,11 @@ public class GameManager : MonoBehaviour
 			Debug.Log("Must Attach Malfunction Manager");
 		}
 
-        if(topEngineBurner.FuelPercentage < 0.0f || bottomEngineBurner.FuelPercentage < 0.0f)
+		if (topEngineBurner.FuelPercentage < 0.0f || bottomEngineBurner.FuelPercentage < 0.0f)
 		{
-            StartGameOver();
+			StartGameOver();
 		}
-    }
+	}
 
 	public void StartGameOver()
 	{
@@ -75,6 +91,7 @@ public class GameManager : MonoBehaviour
 
 	void SetGameOver()
 	{
+		Paused = true;
 		isGameOver = true;
 	}
 }

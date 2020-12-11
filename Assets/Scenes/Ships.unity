@@ -940,6 +940,10 @@ PrefabInstance:
       propertyPath: shipFloorManagerObject
       value: 
       objectReference: {fileID: 87932579}
+    - target: {fileID: 1010255886, guid: fe463f84a9afd2b498bef9e257731811, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1014411042}
     - target: {fileID: 1070106446870865358, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: gameManager
@@ -1005,76 +1009,6 @@ PrefabInstance:
       propertyPath: engineBurner
       value: 
       objectReference: {fileID: 1833403178}
-    - target: {fileID: 2405431314803769159, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1014411042}
-    - target: {fileID: 3527878303843639674, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021132868012132, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021132868012132, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021133439670662, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: engineBurner
-      value: 
-      objectReference: {fileID: 1833403178}
-    - target: {fileID: 4714021133982855441, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134136777992, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134136777992, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134136777992, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134274831139, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134475717990, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1014411042}
-    - target: {fileID: 4714021134564692576, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: engineBurner
-      value: 
-      objectReference: {fileID: 219951977}
-    - target: {fileID: 4714021134620789848, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714021134651047456, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5537664676119489378, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: m_Name
@@ -1133,16 +1067,6 @@ PrefabInstance:
     - target: {fileID: 5537664676119489404, guid: fe463f84a9afd2b498bef9e257731811,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040586176878219581, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1014411042}
-    - target: {fileID: 7924149082892375433, guid: fe463f84a9afd2b498bef9e257731811,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8965679711872830388, guid: fe463f84a9afd2b498bef9e257731811,
