@@ -31,6 +31,7 @@ public class MalfunctionManager : MonoBehaviour
 	{
 		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
 		malfunctions.Shuffle();
+		malfunctions.ForEach(malfunction => malfunction.gameObject.SetActive(false));
 		nextMalfunction = Time.fixedTime + malfunctionRate;
 	}
 
