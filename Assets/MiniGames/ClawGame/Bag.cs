@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bag : MonoBehaviour
 {
-    //[SerializeField] private ClawGame crane;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Toy"))

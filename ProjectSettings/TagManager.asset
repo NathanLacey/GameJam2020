@@ -23,7 +23,7 @@ TagManager:
   - 
   - Fuel
   - Minimap
-  - 
+  - CraneUILayer
   - 
   - 
   - 
@@ -48,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CraneUILayer
+    uniqueID: 3378151921
     locked: 0

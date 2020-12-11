@@ -20,6 +20,8 @@ public class ClawGame : MonoBehaviour
     [SerializeField] private List<GameObject> armLinks;
     [SerializeField] private List<GameObject> clawArms;
 
+    [SerializeField] private GameObject toySpawner;
+
     [SerializeField] private float maxExtensionLength;
     [SerializeField] private float extensionSpeed;
     [SerializeField] private float maxSlideLength;
@@ -28,16 +30,15 @@ public class ClawGame : MonoBehaviour
 
     [SerializeField] CraneState currentCraneState = CraneState.Stationary;
 
-    public bool Extend = false;
-    public bool Slide = false;
-    private bool once = false;
+    private bool onceExtend = true;
+    private bool onceSlide = true;
+    private bool onceFreezeRotation = false;
 
     private float currentExtensionLength;
     private float currentSlideLength;
     private float slerpDelta = 0.0f;
 
-    private Vector3 leftInitialClawPosition;
-    private Vector3 rightInitialClawPosition;
+    private Vector3 initialClawPosition;
 
     private Quaternion leftInitialRotation;
     private Quaternion rightInitialRotation;
@@ -47,37 +48,21 @@ public class ClawGame : MonoBehaviour
         currentExtensionLength = 0.0f;
         currentSlideLength = 0.0f;
 
-        leftInitialClawPosition = clawArms[0].transform.localPosition;
-        rightInitialClawPosition = clawArms[0].transform.localPosition;
+        initialClawPosition = clawArms[0].transform.localPosition;
     }
 
     void Update()
     {
-        if(Extend)
-        {
-            currentCraneState = CraneState.IsExtending;
-            Extend = false;
-        }
-
-        if(Slide)
-        {
-            currentCraneState = CraneState.IsSlidingOut;
-        }
-        else if(currentCraneState == CraneState.IsSlidingOut)
-        {
-            currentCraneState = CraneState.Stationary;
-        }
-
         switch (currentCraneState)
         {
             case CraneState.IsExtending:
                 if (currentExtensionLength < maxExtensionLength)
                 {
-                    if(once)
+                    if(onceFreezeRotation)
                     {
                         clawArms[0].GetComponent<Rigidbody2D>().freezeRotation = false;
                         clawArms[1].GetComponent<Rigidbody2D>().freezeRotation = false;
-                        once = false;
+                        onceFreezeRotation = false;
                     }
                     currentExtensionLength += extensionSpeed;
                     UpdateArmLinks();
@@ -96,6 +81,8 @@ public class ClawGame : MonoBehaviour
             case CraneState.StartOpening:
                 leftInitialRotation = clawArms[0].transform.rotation;
                 rightInitialRotation = clawArms[1].transform.rotation;
+                onceSlide = true;
+                onceExtend = true;
                 currentCraneState = CraneState.IsOpening;
                 break;
 
@@ -116,7 +103,7 @@ public class ClawGame : MonoBehaviour
                     clawArms[1].GetComponent<HingeJoint2D>().useMotor = false;
                     clawArms[0].GetComponent<Rigidbody2D>().freezeRotation = true;
                     clawArms[1].GetComponent<Rigidbody2D>().freezeRotation = true;
-                    once = true;
+                    onceFreezeRotation = true;
                 }
                 break;
 
@@ -152,7 +139,7 @@ public class ClawGame : MonoBehaviour
 
         foreach (var Arm in clawArms)
         {
-            Arm.transform.localPosition = leftInitialClawPosition;
+            Arm.transform.localPosition = initialClawPosition;
         }
     }
 
@@ -190,5 +177,36 @@ public class ClawGame : MonoBehaviour
     public CraneState GetCurrentState()
     {
         return currentCraneState;
+    }
+
+    public void StartSliding()
+    {
+        if (onceSlide)
+        {
+            if (currentCraneState != CraneState.IsSlidingOut)
+            {
+                currentCraneState = CraneState.IsSlidingOut;
+            }
+            else
+            {
+                currentCraneState = CraneState.Stationary;
+                onceSlide = false;
+            }
+        }
+    }
+
+    public void StartExtending()
+    {
+        if (onceExtend && currentCraneState == CraneState.Stationary)
+        {
+            currentCraneState = CraneState.IsExtending;
+            onceExtend = false;
+        }
+    }
+
+    public void StartClawGame()
+    {
+        toySpawner.SetActive(true);
+        //Switch camera
     }
 }
