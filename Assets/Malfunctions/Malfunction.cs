@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -72,9 +71,9 @@ public class Malfunction : MonoBehaviour
 	}
 
 	// called by the manager to start the malfunction
-	public bool TryActivate(System.Random random)
+	public bool TryActivate()
 	{
-		if (!gameObject.activeSelf && random.NextDouble() <= activationChance)
+		if (!gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= activationChance)
 		{
 			Trigger();
 			return true;

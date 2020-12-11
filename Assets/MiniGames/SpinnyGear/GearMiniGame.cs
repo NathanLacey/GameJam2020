@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GearMiniGame : MonoBehaviour, IMiniGame
 {
+    [SerializeField] GameObject MovingGearParent;
+    [SerializeField] GameObject StoppedGearParent;
     List<IsTriggered> TriggerComponents = new List<IsTriggered>();
     List<DragAndSpin> GearComponents = new List<DragAndSpin>();
     public bool IsFinished { 
@@ -29,16 +31,21 @@ public class GearMiniGame : MonoBehaviour, IMiniGame
     {
         if (IsFinished)
         {
-            gameObject.SetActive(false);
+            StoppedGearParent.SetActive(true);
+            MovingGearParent.SetActive(false);
         }
     }
 
 
     public void StartMiniGame()
 	{
-        gameObject.SetActive(true);
         SetupComponents();
         GearComponents.ForEach(gear => gear.Reset());
+        GearComponents.ForEach(gear => gear.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+        GearComponents.ForEach(gear => gear.AutoSpin = Random.Range(0, 3) == 0 ? true : false);
+        GearComponents.ForEach(gear => gear.DeprecationValue = Random.Range(0.2f, 0.8f));
+        StoppedGearParent.SetActive(false);
+        MovingGearParent.SetActive(true);
     }
 
     public void OnMalfunctionStart()

@@ -38,25 +38,20 @@ public class ParallaxSystem : MonoBehaviour
 	}
 	private void Start()
 	{
-		prevRefPos = referenceObject.transform.position;
 	}
 
 	void Update()
 	{
 		float diminishingMultiplier = 1.0f;
-		float incrementalMultiplier = 0.05f;
-		Vector3 currentMovement = (referenceObject.transform.position - prevRefPos);
 		prevRefPos = referenceObject.transform.position;
 		for(int i = 0; i < parallaxLayers.Count; ++i)
 		{
 			float multiplier = parallaxControls[i];
 			diminishingMultiplier *= multiplier;
-			incrementalMultiplier /= multiplier;
 
 			var layer = parallaxLayers[i];
 			var position = layer.transform.position;
 			position += wind * diminishingMultiplier * Time.deltaTime;
-			position += currentMovement * incrementalMultiplier;
 			position.z = i + 1;
 			layer.transform.position = position;
 		}

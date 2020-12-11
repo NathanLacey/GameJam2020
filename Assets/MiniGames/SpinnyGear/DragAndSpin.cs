@@ -9,12 +9,12 @@ public class DragAndSpin : MonoBehaviour
 	[SerializeField] InputAction DragAction;
 
 	CircleCollider2D Collider;
-	[SerializeField] [Range(0.0f, 1.0f)] float DeprecationValue;
+	[SerializeField] [Range(0.0f, 1.0f)] public float DeprecationValue;
 	float TotalDistanceSpun = 0.0f;
 
 	public int TotalTimesSpun { get { return (int)(TotalDistanceSpun / 720.0f); } }
 
-	[SerializeField] bool AutoSpin = false;
+	[SerializeField] public bool AutoSpin = false;
 
 	bool HasStartedDragging = false;
 	float AngleAtDragStart = 0.0f;

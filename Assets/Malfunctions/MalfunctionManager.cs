@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MalfunctionManager : MonoBehaviour
 {
-	public static System.Random random = new System.Random();
-
 	List<Malfunction> malfunctions = new List<Malfunction>();
 	int malfunctionIndex;
 	[SerializeField] [Range(0.0f, 100.0f)] float malfunctionRate;
@@ -29,13 +26,16 @@ public class MalfunctionManager : MonoBehaviour
 	}
 	void Start()
 	{
+		
 		malfunctions.AddRange(Resources.FindObjectsOfTypeAll<Malfunction>());
+		malfunctions.RemoveAll(malfunction => malfunction.gameObject.scene.rootCount == 0); 
 		malfunctions.Shuffle();
+		malfunctions.ForEach(malfunction => malfunction.gameObject.SetActive(false));
 		nextMalfunction = Time.fixedTime + malfunctionRate;
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		if (Time.fixedTime >= nextMalfunction)
 		{
@@ -49,7 +49,7 @@ public class MalfunctionManager : MonoBehaviour
 			// keep trying to trigger malfunctions until one happens or we've tried all of them
 			while (!malfunctionTriggered)
 			{
-				malfunctionTriggered = malfunctions[malfunctionIndex].TryActivate(random);
+				malfunctionTriggered = malfunctions[malfunctionIndex].TryActivate();
 				if (++malfunctionIndex >= malfunctions.Count)
 				{
 					malfunctionIndex = 0;
